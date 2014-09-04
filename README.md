@@ -1,7 +1,7 @@
 docker-php-5.3.28
 =================
 
-PHP 5.3.28
+PHP 5.4.31
 ----------
 
 ### Configuration file (php.ini) location

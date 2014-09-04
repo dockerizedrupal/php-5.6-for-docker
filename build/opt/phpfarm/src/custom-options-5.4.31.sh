@@ -1,4 +1,8 @@
 configoptions="--with-libdir=/lib/x86_64-linux-gnu \
+  --enable-apc \
+  --enable-memcached \
+  --enable-xdebug \
+  --enable-fpm \
   --enable-gd-native-ttf \
   --enable-exif \
   --enable-ftp \
