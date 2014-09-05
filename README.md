@@ -1,21 +1,20 @@
 docker-php-5.5.15
 =================
 
-PHP 5.5.15
-----------
+Run the container
+-----------------
 
-### Configuration file (php.ini) location
+    sudo docker run \
+      --name php \
+      --net host \
+      --volumes-from apache \
+      -d \
+      simpledrupalcloud/php:5.5.15
 
-    /opt/phpfarm/inst/php-5.5.15/lib/php.ini
+Build the image yourself
+------------------------
 
-### PHP-FPM (FastCGI Process Manager)
-
-Listening on port 9000
-
-#### Configuration file (php-fpm.conf) location
-
-    /opt/phpfarm/inst/php-5.5.15/etc/php-fpm.conf
-
-### Extensions
-
-#### Xdebug
+    git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-php.git docker-php
+    cd docker-php
+    git checkout 5.5.15
+    sudo docker build -t php:5.5.15 .
