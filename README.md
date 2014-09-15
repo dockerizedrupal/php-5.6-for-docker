@@ -29,7 +29,7 @@ Apache directives
       AddHandler php .php
 
       Alias /php55 /var/www/php55
-      FastCgiExternalServer /var/www/php52 -host 127.0.0.1:5515 -idle-timeout 300 -pass-header Authorization
+      FastCgiExternalServer /var/www/php55 -host 127.0.0.1:5515 -idle-timeout 300 -pass-header Authorization
 
       <Location /php55>
         Order deny,allow
