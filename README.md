@@ -4,7 +4,7 @@ docker-php-5.5.15
 Run the container
 -----------------
 
-    CONTAINER=php5515 && sudo docker run \
+    CONTAINER=php55 && sudo docker run \
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
       -p 5515:5515
