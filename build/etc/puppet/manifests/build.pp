@@ -52,18 +52,18 @@ class php_extension_xdebug {
     require => Exec['wget http://xdebug.org/files/xdebug-2.2.5.tgz']
   }
 
-  exec { 'phpize-5.5.15 xdebug':
-    command => '/phpfarm/inst/bin/phpize-5.5.15',
+  exec { 'phpize-5.5.17 xdebug':
+    command => '/phpfarm/inst/bin/phpize-5.5.17',
     cwd => '/tmp/xdebug-2.2.5',
     require => Exec['tar xzf xdebug-2.2.5.tgz']
   }
 
-  exec { '/bin/bash -l -c "cd /tmp/xdebug-2.2.5 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.5.15"':
-    require => Exec['phpize-5.5.15 xdebug']
+  exec { '/bin/bash -l -c "cd /tmp/xdebug-2.2.5 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.5.17"':
+    require => Exec['phpize-5.5.17 xdebug']
   }
 
   exec { '/bin/bash -l -c "cd /tmp/xdebug-2.2.5 && make"':
-    require => Exec['/bin/bash -l -c "cd /tmp/xdebug-2.2.5 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.5.15"']
+    require => Exec['/bin/bash -l -c "cd /tmp/xdebug-2.2.5 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.5.17"']
   }
 
   exec { '/bin/bash -l -c "cd /tmp/xdebug-2.2.5 && make install"':
@@ -76,45 +76,45 @@ class php {
   include php_supervisor
   include php_extension_xdebug
 
-  file { '/phpfarm/src/custom-options-5.5.15.sh':
+  file { '/phpfarm/src/custom-options-5.5.17.sh':
     ensure => present,
-    source => '/tmp/build/phpfarm/src/custom-options-5.5.15.sh',
+    source => '/tmp/build/phpfarm/src/custom-options-5.5.17.sh',
     mode => 755,
     require => Class['phpfarm']
   }
 
-  exec { '/phpfarm/src/compile.sh 5.5.15':
+  exec { '/phpfarm/src/compile.sh 5.5.17':
     timeout => 0,
-    require => File['/phpfarm/src/custom-options-5.5.15.sh']
+    require => File['/phpfarm/src/custom-options-5.5.17.sh']
   }
 
-  exec { 'rm -rf /phpfarm/src/php-5.5.15':
+  exec { 'rm -rf /phpfarm/src/php-5.5.17':
     path => ['/bin'],
-    require => Exec['/phpfarm/src/compile.sh 5.5.15']
+    require => Exec['/phpfarm/src/compile.sh 5.5.17']
   }
 
-  file { '/phpfarm/inst/php-5.5.15/etc/php-fpm.conf':
+  file { '/phpfarm/inst/php-5.5.17/etc/php-fpm.conf':
     ensure => present,
-    source => '/tmp/build/phpfarm/inst/php-5.5.15/etc/php-fpm.conf',
+    source => '/tmp/build/phpfarm/inst/php-5.5.17/etc/php-fpm.conf',
     mode => 644,
-    require => Exec['/phpfarm/src/compile.sh 5.5.15']
+    require => Exec['/phpfarm/src/compile.sh 5.5.17']
   }
 
-  file { '/phpfarm/inst/php-5.5.15/lib/php.ini':
+  file { '/phpfarm/inst/php-5.5.17/lib/php.ini':
     ensure => present,
-    source => '/tmp/build/phpfarm/inst/php-5.5.15/lib/php.ini',
+    source => '/tmp/build/phpfarm/inst/php-5.5.17/lib/php.ini',
     mode => 644,
-    require => Exec['/phpfarm/src/compile.sh 5.5.15']
+    require => Exec['/phpfarm/src/compile.sh 5.5.17']
   }
 
   file { '/etc/profile.d/phpfarm.sh':
     ensure => present,
     source => '/tmp/build/etc/profile.d/phpfarm.sh',
     mode => 755,
-    require => Exec['/phpfarm/src/compile.sh 5.5.15']
+    require => Exec['/phpfarm/src/compile.sh 5.5.17']
   }
 
-  exec { '/bin/bash -l -c "switch-phpfarm 5.5.15"':
+  exec { '/bin/bash -l -c "switch-phpfarm 5.5.17"':
     require => File['/etc/profile.d/phpfarm.sh']
   }
 }
