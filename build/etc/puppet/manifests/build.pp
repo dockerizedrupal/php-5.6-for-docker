@@ -1,22 +1,33 @@
 class packages {
-  package {[
-    'git',
-    'curl',
-    'build-essential',
-    'libxml2-dev',
-    'libssl-dev',
-    'libbz2-dev',
-    'libcurl4-gnutls-dev',
-    'libjpeg-dev',
-    'libpng12-dev',
-    'libmcrypt-dev',
-    'libmhash-dev',
-    'libmysqlclient-dev',
-    'libpspell-dev',
-    'autoconf',
-    'libcloog-ppl0'
-  ]:
+    package {[
+      'git',
+      'curl',
+      'build-essential',
+      'libxml2-dev',
+      'libssl-dev',
+      'libbz2-dev',
+      'libcurl4-gnutls-dev',
+      'libjpeg-dev',
+      'libpng12-dev',
+      'libmcrypt-dev',
+      'libmhash-dev',
+      'libmysqlclient-dev',
+      'libpspell-dev',
+      'autoconf',
+      'libcloog-ppl0',
+      'ssmtp'
+    ]:
     ensure => present
+  }
+}
+
+class ssmtp {
+  include packages
+
+  file { '/etc/ssmtp/ssmtp.conf':
+    ensure => present,
+    source => '/tmp/build/etc/ssmtp/ssmtp.conf',
+    require => Class['packages']
   }
 }
 
@@ -128,6 +139,7 @@ node default {
 
   include packages
   include php
+  include ssmtp
 
   Class['packages'] -> Class['php']
 
