@@ -7,7 +7,7 @@ Run the container
     CONTAINER=php56 && sudo docker run \
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
-      -p 5600:5600
+      -p 9000:9000
       -v /var/www:/var/www \
       -d \
       simpledrupalcloud/php:5.6.0
@@ -29,7 +29,7 @@ Apache directives
       AddHandler php .php
 
       Alias /php56 /var/www/php56
-      FastCgiExternalServer /var/www/php56 -host 127.0.0.1:5600 -idle-timeout 300 -pass-header Authorization
+      FastCgiExternalServer /var/www/php56 -host 127.0.0.1:9000 -idle-timeout 300 -pass-header Authorization
 
       <Location /php56>
         Order deny,allow
