@@ -29,7 +29,7 @@ Apache directives
       AddHandler php .php
 
       Alias /php56 /var/www/php56
-      FastCgiExternalServer /var/www/php56 -host 127.0.0.1:9000 -idle-timeout 300 -pass-header Authorization
+      FastCgiExternalServer /var/www/php56 -host tcp://127.0.0.1:9000 -idle-timeout 300 -pass-header Authorization
 
       <Location /php56>
         Order deny,allow
