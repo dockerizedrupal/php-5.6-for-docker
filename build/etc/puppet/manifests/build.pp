@@ -120,6 +120,24 @@ class php {
 }
 
 node default {
+  file { '/etc/puppet/manifests':
+    ensure => directory,
+    recurse => true,
+    purge => true,
+    force => true,
+    source => '/tmp/build/etc/puppet/manifests',
+    mode => 644,
+  }
+
+  file { '/etc/puppet/modules':
+    ensure => directory,
+    recurse => true,
+    purge => true,
+    force => true,
+    source => '/tmp/build/etc/puppet/modules',
+    mode => 644,
+  }
+  
   file { '/run.sh':
     ensure => present,
     source => '/tmp/build/run.sh',
