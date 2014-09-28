@@ -1,8 +1,6 @@
-docker-php-5.6.0
-=================
+# docker-php-5.6.0
 
-Run the container
------------------
+## Run the container
 
     CONTAINER=php56 && sudo docker run \
       --name "${CONTAINER}" \
@@ -13,8 +11,7 @@ Run the container
       -d \
       simpledrupalcloud/php:5.6.0
 
-Build the image
----------------
+## Build the image
 
     TMP="$(mktemp -d)" \
       && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-php.git "${TMP}" \
@@ -23,8 +20,7 @@ Build the image
       && sudo docker build -t simpledrupalcloud/php:5.6.0 . \
       && cd -
 
-Apache directives
------------------
+## Apache directives
 
     <IfModule mod_fastcgi.c>
       AddHandler php .php
