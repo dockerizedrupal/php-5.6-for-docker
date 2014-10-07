@@ -1,5 +1,5 @@
 class packages {
-    package {[
+  package {[
       'git',
       'curl',
       'build-essential',
