@@ -1,17 +1,30 @@
 # docker-php-5.6-dev
 
-## Run the container
+A [Docker](https://docker.com/) container for [PHP](http://php.net/) version 5.6.1 that runs PHP in FPM (FastCGI Process Manager) mode.
 
-    CONTAINER=php56 && sudo docker run \
+## PHP 5.6.1
+
+### Run the container
+
+Using the `docker` command:
+
+    CONTAINER="php56" && sudo docker run \
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
       -p 9000:9000 \
-      --link mailcatcher:ssmtp \
       -v /var/www:/var/www \
       -d \
       simpledrupalcloud/php:5.6-dev
+      
+Using the `fig` command
 
-## Build the image
+    TMP="$(mktemp -d)" \
+      && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-php.git "${TMP}" \
+      && cd "${TMP}" \
+      && git checkout 5.6-dev \
+      && fig up
+
+### Build the image
 
     TMP="$(mktemp -d)" \
       && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-php.git "${TMP}" \
@@ -20,7 +33,7 @@
       && sudo docker build -t simpledrupalcloud/php:5.6-dev . \
       && cd -
 
-## Apache directives
+### Apache directives
 
     <IfModule mod_fastcgi.c>
       AddHandler php .php
@@ -36,3 +49,7 @@
 
       Action php /php56
     </IfModule>
+
+## License
+
+**MIT**
