@@ -8,7 +8,7 @@ class php {
     source => 'puppet:///modules/php/phpfarm/src/php-5.6.1.tar.gz'
   }
 
-  exec { 'zcat php-5.6.1.tar.gz | tar xzf -':
+  exec { 'tar xzf php-5.6.1.tar.gz':
     cwd => '/phpfarm/src',
     path => ['/bin'],
     require => File['/phpfarm/src/php-5.6.1.tar.gz']
@@ -18,7 +18,7 @@ class php {
     ensure => present,
     source => 'puppet:///modules/php/phpfarm/src/custom/options-5.6.1.sh',
     mode => 755,
-    require => Exec['zcat php-5.6.1.tar.gz | tar xzf -']
+    require => Exec['tar xzf php-5.6.1.tar.gz']
   }
 
   exec { '/phpfarm/src/main.sh 5.6.1':
