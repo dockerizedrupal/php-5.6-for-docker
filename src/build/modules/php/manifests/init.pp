@@ -3,19 +3,19 @@ class php {
   require php::phpfarm
   require php::supervisor
 
-  file { '/phpfarm/src/php-5.6.1.tar.gz':
+  file { '/tmp/php-5.6.1.tar.gz':
     ensure => present,
-    source => 'puppet:///modules/php/phpfarm/src/php-5.6.1.tar.gz'
+    source => 'puppet:///modules/php/tmp/php-5.6.1.tar.gz'
   }
 
   exec { 'tar xzf php-5.6.1.tar.gz':
-    cwd => '/phpfarm/src',
+    cwd => '/tmp',
     path => ['/bin'],
-    require => File['/phpfarm/src/php-5.6.1.tar.gz']
+    require => File['/tmp/php-5.6.1.tar.gz']
   }
 
-  exec { 'rm php-5.6.1.tar.gz':
-    cwd => '/phpfarm/src',
+  exec { 'mv php-5.6.1 /phpfarm/src/php-5.6.1':
+    cwd => '/tmp',
     path => ['/bin'],
     require => Exec['tar xzf php-5.6.1.tar.gz']
   }
@@ -24,7 +24,7 @@ class php {
     ensure => present,
     source => 'puppet:///modules/php/phpfarm/src/custom/options-5.6.1.sh',
     mode => 755,
-    require => Exec['tar xzf php-5.6.1.tar.gz']
+    require => Exec['mv php-5.6.1 /phpfarm/src/php-5.6.1']
   }
 
   exec { '/phpfarm/src/main.sh 5.6.1':
