@@ -13,7 +13,7 @@ class php::phpfarm {
   }
 
   exec { 'mv phpfarm-master /phpfarm':
-    cwd => '/',
+    cwd => '/tmp',
     path => ['/bin'],
     require => Exec['unzip phpfarm-master.zip']
   }
