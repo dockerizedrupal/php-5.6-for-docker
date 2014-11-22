@@ -43,14 +43,17 @@ class php::extension::memcached {
   }
 
   exec { '/bin/bash -l -c "cd /tmp/memcached-2.2.0 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.6.1"':
+    logoutput => true,
     require => Exec['phpize-5.6.1 memcached']
   }
 
   exec { '/bin/bash -l -c "cd /tmp/memcached-2.2.0 && make"':
+    logoutput => true,
     require => Exec['/bin/bash -l -c "cd /tmp/memcached-2.2.0 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.6.1"']
   }
 
   exec { '/bin/bash -l -c "cd /tmp/memcached-2.2.0 && make install"':
+    logoutput => true,
     require => Exec['/bin/bash -l -c "cd /tmp/memcached-2.2.0 && make"']
   }
 }
