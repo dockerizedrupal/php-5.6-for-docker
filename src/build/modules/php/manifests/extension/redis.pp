@@ -19,14 +19,17 @@ class php::extension::redis {
   }
 
   exec { '/bin/bash -l -c "cd /tmp/redis-2.2.5 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.6.1 --enable-redis-igbinary"':
+    timeout => 0,
     require => Exec['phpize-5.6.1 redis']
   }
 
   exec { '/bin/bash -l -c "cd /tmp/redis-2.2.5 && make"':
+    timeout => 0,
     require => Exec['/bin/bash -l -c "cd /tmp/redis-2.2.5 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.6.1 --enable-redis-igbinary"']
   }
 
   exec { '/bin/bash -l -c "cd /tmp/redis-2.2.5 && make install"':
+    timeout => 0,
     require => Exec['/bin/bash -l -c "cd /tmp/redis-2.2.5 && make"']
   }
 }
