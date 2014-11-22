@@ -1,15 +1,15 @@
 class php::extension::xdebug {
   require php
 
-  exec { 'wget http://xdebug.org/files/xdebug-2.2.5.tgz':
-    cwd => '/tmp',
-    path => ['/usr/bin']
+  file { '/tmp/xdebug-2.2.6.tgz':
+    ensure => present,
+    source => 'puppet:///modules/php/tmp/xdebug-2.2.6.tgz'
   }
 
   exec { 'tar xzf xdebug-2.2.5.tgz':
     cwd => '/tmp',
     path => ['/bin'],
-    require => Exec['wget http://xdebug.org/files/xdebug-2.2.5.tgz']
+    require => File['/tmp/xdebug-2.2.6.tgz']
   }
 
   exec { 'phpize-5.6.1 xdebug':
