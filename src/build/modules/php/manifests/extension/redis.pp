@@ -1,4 +1,5 @@
 class php::extension::redis {
+  require php
   require php::extension::igbinary
 
   file { '/tmp/redis-2.2.5.tgz':

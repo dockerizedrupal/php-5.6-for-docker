@@ -20,7 +20,7 @@ class php::extension::igbinary {
 
   exec { '/bin/bash -l -c "cd /tmp/igbinary-1.2.1 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.6.1 --enable-igbinary"':
     timeout => 0,
-    require => Exec['phpize-5.6.1 redis']
+    require => Exec['phpize-5.6.1 igbinary']
   }
 
   exec { '/bin/bash -l -c "cd /tmp/igbinary-1.2.1 && make"':

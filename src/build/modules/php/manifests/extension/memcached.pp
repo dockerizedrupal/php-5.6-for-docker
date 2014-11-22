@@ -1,4 +1,5 @@
 class php::extension::memcached {
+  require php
   require php::extension::igbinary
 
   file { '/tmp/libmemcached-1.0.18.tar.gz':
