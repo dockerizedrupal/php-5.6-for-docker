@@ -18,7 +18,7 @@ class php::extension::redis {
     require => Exec['tar xzf redis-2.2.5.tgz']
   }
 
-  exec { '/bin/bash -l -c "cd /tmp/xredis-2.2.5 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.6.1 --enable-redis-igbinary"':
+  exec { '/bin/bash -l -c "cd /tmp/redis-2.2.5 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.6.1 --enable-redis-igbinary"':
     require => Exec['phpize-5.6.1 redis']
   }
 
