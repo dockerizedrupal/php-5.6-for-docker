@@ -28,7 +28,7 @@ Using the `fig` command
       && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-php.git "${TMP}" \
       && cd "${TMP}" \
       && git checkout 5.6 \
-      && fig up
+      && sudo fig up
 
 ### Build the image
 
