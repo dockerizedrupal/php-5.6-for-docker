@@ -4,4 +4,5 @@ node default {
   include php::extension::memcached
   include php::extension::redis
   include php::extension::apcu
+  include php::drush
 }
