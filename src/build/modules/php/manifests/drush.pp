@@ -8,7 +8,7 @@ class php::drush {
     mode => 644
   }
 
-  exec { '/bin/bash -l -c "source /root/.bashrc && composer global require drush/drush:6.*"':
+  exec { 'su - root -c "composer global require drush/drush:6.*"':
     timeout => 0,
     require => File['/root/.bashrc']
   }
