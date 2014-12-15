@@ -10,9 +10,24 @@ class php::extension::blackfire {
     source => 'puppet:///modules/php/tmp/blackfire-php-linux_amd64-php-56.so'
   }
 
-  file { '/usr/local/bin/blackfire-agent-linux_amd64':
+  exec { '/bin/su - root -c "curl -s https://packagecloud.io/gpg.key | apt-key add -"': }
+
+  file { '/etc/apt/sources.list.d/blackfire.list':
     ensure => present,
-    source => 'puppet:///modules/php/tmp/blackfire-agent-linux_amd64',
-    mode => 755
+    source => 'puppet:///modules/nginx/etc/apt/sources.list.d/blackfire.list',
+    mode => 644,
+    require => Exec['/bin/su - root -c "curl -s https://packagecloud.io/gpg.key | apt-key add -"']
+  }
+
+  exec { 'apt-get update':
+    path => ['/usr/bin'],
+    require => File['/etc/apt/sources.list.d/blackfire.list']
+  }
+
+  package {[
+      'blackfire-agent'
+    ]:
+    ensure => present,
+    require => Exec['apt-get update']
   }
 }
