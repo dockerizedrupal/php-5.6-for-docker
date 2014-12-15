@@ -14,7 +14,7 @@ class php::extension::blackfire {
 
   file { '/etc/apt/sources.list.d/blackfire.list':
     ensure => present,
-    source => 'puppet:///modules/nginx/etc/apt/sources.list.d/blackfire.list',
+    source => 'puppet:///modules/php/etc/apt/sources.list.d/blackfire.list',
     mode => 644,
     require => Exec['/bin/su - root -c "curl -s https://packagecloud.io/gpg.key | apt-key add -"']
   }
