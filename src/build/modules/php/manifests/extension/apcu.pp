@@ -18,18 +18,18 @@ class php::extension::apcu {
     require => Exec['tar xzf apcu-4.0.7.tgz']
   }
 
-  exec { '/bin/bash -l -c "cd /tmp/apcu-4.0.7 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.6.1"':
+  exec { '/bin/su - root -c "cd /tmp/apcu-4.0.7 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.6.1"':
     timeout => 0,
     require => Exec['phpize-5.6.1 apcu']
   }
 
-  exec { '/bin/bash -l -c "cd /tmp/apcu-4.0.7 && make"':
+  exec { '/bin/su - root -c "cd /tmp/apcu-4.0.7 && make"':
     timeout => 0,
-    require => Exec['/bin/bash -l -c "cd /tmp/apcu-4.0.7 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.6.1"']
+    require => Exec['/bin/su - root -c "cd /tmp/apcu-4.0.7 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.6.1"']
   }
 
-  exec { '/bin/bash -l -c "cd /tmp/apcu-4.0.7 && make install"':
+  exec { '/bin/su - root -c "cd /tmp/apcu-4.0.7 && make install"':
     timeout => 0,
-    require => Exec['/bin/bash -l -c "cd /tmp/apcu-4.0.7 && make"']
+    require => Exec['/bin/su - root -c "cd /tmp/apcu-4.0.7 && make"']
   }
 }
