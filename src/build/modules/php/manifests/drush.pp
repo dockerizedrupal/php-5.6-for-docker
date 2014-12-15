@@ -2,9 +2,13 @@ class php::drush {
   require php
   require php::drush::packages
 
-  exec { '/bin/bash -c "echo \'export PATH="${HOME}/.composer/vendor/bin:${PATH}"\' >> ${HOME}/.bashrc"': }
+  file { '/root/.bashrc':
+    ensure => present,
+    source => 'puppet:///modules/php/root/.bashrc',
+    mode => 644
+  }
 
-  exec { '/bin/bash -c "source ${HOME}/.bashrc && composer global require drush/drush:6.*"':
-    require => '/bin/bash -c "echo \'export PATH="${HOME}/.composer/vendor/bin:${PATH}"\' >> ${HOME}/.bashrc"';
+  exec { '/bin/bash -l -c "source ${HOME}/.bashrc && composer global require drush/drush:6.*"':
+    require => File['/root/.bashrc'];
   }
 }
