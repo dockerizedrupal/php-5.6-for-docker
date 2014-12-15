@@ -9,6 +9,7 @@ class php::drush {
   }
 
   exec { '/bin/bash -l -c "source ${HOME}/.bashrc && composer global require drush/drush:6.*"':
-    require => File['/root/.bashrc'];
+    timeout => 0,
+    require => File['/root/.bashrc']
   }
 }
