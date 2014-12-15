@@ -12,4 +12,10 @@ class php::drush {
     timeout => 0,
     require => File['/root/.bashrc']
   }
+
+  file { '/etc/bash_completion.d/drush.complete.sh':
+    ensure => present,
+    source => 'puppet:///modules/php/etc/bash_completion.d/drush.complete.sh',
+    mode => 755
+  }
 }
