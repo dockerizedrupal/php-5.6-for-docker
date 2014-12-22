@@ -44,13 +44,6 @@ class php {
     require => Exec['/phpfarm/src/main.sh 5.6.1']
   }
 
-  file { '/phpfarm/inst/php-5.6.1/lib/php.ini':
-    ensure => present,
-    source => 'puppet:///modules/php/phpfarm/inst/php-5.6.1/lib/php.ini',
-    mode => 644,
-    require => Exec['/phpfarm/src/main.sh 5.6.1']
-  }
-
   exec { '/bin/su - root -c "switch-phpfarm 5.6.1"':
     require => Exec['/phpfarm/src/main.sh 5.6.1']
   }
