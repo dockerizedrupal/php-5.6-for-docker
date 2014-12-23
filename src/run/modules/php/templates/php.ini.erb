@@ -393,7 +393,7 @@ max_input_vars = 4096
 
 ; Maximum amount of memory a script may consume (128MB)
 ; http://php.net/memory-limit
-memory_limit = 512M
+memory_limit = <%= @php_ini_memory_limit ? @php_ini_memory_limit : "512M" %>
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Error handling and logging ;
@@ -1899,7 +1899,7 @@ ldap.max_links = -1
 ; SSL stream context option.
 ;openssl.capath=
 
-date.timezone = "<% @php_ini_date_timezone ? @php_ini_date_timezone : "UTC" %>"
+date.timezone = "<%= @php_ini_date_timezone ? @php_ini_date_timezone : "UTC" %>"
 
 [igbinary]
 extension = igbinary.so
@@ -1910,7 +1910,7 @@ zend_extension = /phpfarm/inst/php-5.6.1/lib/php/extensions/no-debug-non-zts-201
 
 opcache.enable = 1
 opcache.enable_cli = 1
-opcache.memory_consumption = 1024
+opcache.memory_consumption = <%= @php_ini_opcache_memory_consumption ? @php_ini_opcache_memory_consumption : "1024" %>
 opcache.interned_strings_buffer = 8
 opcache.max_accelerated_files = 100000
 opcache.revalidate_freq = 0
@@ -1956,7 +1956,7 @@ extension = apcu.so
 
 apc.enabled = 1
 apc.shm_segments = 1
-apc.shm_size = 1024M
+apc.shm_size = <%= @php_ini_apc_shm_size ? @php_ini_apc_shm_size : "1024M" %>
 apc.stat = 1
 apc.ttl = 3600
 apc.enable_cli = 1
