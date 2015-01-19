@@ -21,4 +21,10 @@ class php::phpcs::coder {
     path => ['/bin'],
     require => Exec['mkdir /root/.drush']
   }
+
+  file { '/root/.composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/Drupal':
+    ensure => link,
+    target => '/root/.drush/coder/coder_sniffer/Drupal',
+    require => Exec['mv /tmp/coder /root/.drush/coder']
+  }
 }
