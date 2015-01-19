@@ -12,8 +12,13 @@ class php::phpcs::coder {
     require => File['/tmp/coder-7.x-2.4.tar.gz']
   }
 
-  exec { 'mv /tmp/coder /root/.drush/coder':
+  exec { 'mkdir /root/.drush':
     path => ['/bin'],
     require => Exec['tar xzf coder-7.x-2.4.tar.gz']
+  }
+
+  exec { 'mv /tmp/coder /root/.drush/coder':
+    path => ['/bin'],
+    require => Exec['mkdir /root/.drush']
   }
 }
