@@ -118,6 +118,8 @@ Keep in mind that Drush was executed three times in a single test.
 
 This means that the average execution time difference displayed on the graph between native Drush and the wrapper script could be narrowed down at least three times, which is makes the end result approximately 0.5 seconds.
 
+All tests were run on a DigitalOcean server with 8GB of RAM.
+
 ## License
 
 **MIT**
