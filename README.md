@@ -2,7 +2,7 @@
 
 A [Docker](https://docker.com/) container for [PHP](http://php.net/) version 5.6.1 that runs PHP in FPM (FastCGI Process Manager) mode.
 
-PHP configuration, extensions and tools built into the image are primarily aimed for the developers that use [Drupal](https://www.drupal.org/) as their primary development framework.
+Configuration, PHP extensions and other tools built into the image are primarily aimed for the developers that are using [Drupal](https://www.drupal.org/) as their primary development framework.
 
 ## Run the container
 
@@ -72,15 +72,15 @@ PHP extensions compiled into the image.
 
 ### PHP_CodeSniffer
 
-[PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) is included with the image to help you ensure that your PHP code remains clean and consistent.
+[PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) is a tools that helps you to ensure that your PHP code remains clean and consistent.
 
-#### PHPCompatibility
+### PHPCompatibility
 
-[PHPCompatibility](https://github.com/wimg/PHPCompatibility) sniffs for PHP_CodeSniffer have been added to the image.
+[PHPCompatibility](https://github.com/wimg/PHPCompatibility) is a set of sniffs for PHP_CodeSniffer.
 
 PHPCompatibility allows you to check the compatibility of your PHP code to different PHP versions.
 
-#### Coder
+### Coder
 
 Since this image is mostly oriented towards users that use Drupal as their primary development framework, there is also a tool called [Coder](https://www.drupal.org/project/coder) available to use.
 
@@ -88,21 +88,33 @@ Coder helps you to ensure that your PHP code is written against Drupal's coding 
 
 ### Drush
 
-[Drush](https://github.com/drush-ops/drush) is built into the image.
+Every Drupal developer should know what [Drush](https://github.com/drush-ops/drush) is.
 
-There is also a wrapper script `tools/drush.sh` that allows you to use Drush directly from your host to communicate with the Drush that lives inside the container.
+There is also a wrapper script `tools/drush.sh` that allows you to use Drush directly from your host to communicate with the native Drush that lives inside the container.
+
+The wrapper script for Drush also can help you set up a fully working development environment, which consists of multiple Docker containers.
+ 
+The services that it currently knows about are:
+
+* Apache HTTP server
+* MySQL database server
+* PHP-FPM
+* Memcache
+* phpMyAdmin
+* Adminer
+* Mailcatcher
 
 #### Performance graph
 
-A graph comparing the execution times of Drush when running it from inside the container and outside the container.
+A graph comparing the execution times of Drush when running it from inside the container and from outside the container.
 
 ![drush_graph](/drush_graph.png)
 
-The command that were used to do the test is:
+The command that was used to do the test is following:
 
     for i in $(seq 1 20); do time bash -c "drush -y en views && drush -y dis views && drush -y pm-uninstall views"; sleep 1; done
     
-Keep in mind that Drush was executed three times in each test.
+Keep in mind that Drush was executed three times in a single test.
 
 This means that the average execution time difference displayed on the graph between native Drush and the wrapper script could be narrowed down at least three times, which is approximately 0.5 seconds.
 
