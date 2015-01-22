@@ -72,7 +72,7 @@ PHP extensions compiled into the image.
 
 ### PHP_CodeSniffer
 
-[PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) is a tools that helps you to ensure that your PHP code remains clean and consistent.
+[PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) is a tool that helps you to ensure that your PHP code remains clean and consistent.
 
 ### PHPCompatibility
 
