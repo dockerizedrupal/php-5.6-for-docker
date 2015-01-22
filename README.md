@@ -116,7 +116,7 @@ The command that was used to do the test is following:
     
 Keep in mind that Drush was executed three times in a single test.
 
-This means that the average execution time difference displayed on the graph between native Drush and the wrapper script could be narrowed down at least three times, which is approximately 0.5 seconds.
+This means that the average execution time difference displayed on the graph between native Drush and the wrapper script could be narrowed down at least three times, which is makes the end result approximately 0.5 seconds.
 
 ## License
 
