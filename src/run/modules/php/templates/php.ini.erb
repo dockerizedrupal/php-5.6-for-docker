@@ -1937,7 +1937,7 @@ xdebug.max_nesting_level = 1000
 extension = memcached.so
 <% end %>
 
-<% if @php_extension_redis_enable %>
+<% if @php_extension_redis_enable == "yes" %>
 [redis]
 extension = redis.so
 <% end %>
