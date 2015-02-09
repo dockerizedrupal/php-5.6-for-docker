@@ -8,17 +8,10 @@ Configuration, PHP extensions and other tools built into the image are primarily
 
 Using the `docker` command:
 
-    CONTAINER="httpddata" && sudo docker run \
-      --name "${CONTAINER}" \
-      -h "${CONTAINER}" \
-      -v /httpd/data \
-      simpledrupalcloud/data:latest
-
-    CONTAINER="php" && sudo docker run \
+    CONTAINER="php56" && sudo docker run \
       --name "${CONTAINER}" \
       -h "${CONTAINER}" \
       -p 9000:9000 \
-      --volumes-from httpddata \
       -d \
       simpledrupalcloud/php:5.6
 
