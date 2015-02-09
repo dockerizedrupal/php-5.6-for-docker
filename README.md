@@ -90,10 +90,14 @@ Coder helps you to ensure that your PHP code is written against Drupal's coding 
 
 Every Drupal developer should know what [Drush](https://github.com/drush-ops/drush) is.
 
+There are three versions (5.11.0, 6.5.0 and 7.0.0-alpha8) of Drush built into this image.
+
+You can choose upon starting the container by passing a corresponding environment variable `DRUSH_VERSION=5|6|7` which version should be the default for Drush.
+
 There is also a wrapper script `tools/drush.sh` that allows you to use Drush directly from your host to communicate with the native Drush that lives inside the container.
 
 The wrapper script for Drush also can help you set up a fully working development environment, which consists of multiple Docker containers.
- 
+
 The services that it currently knows about are:
 
 * Apache HTTP server
@@ -113,10 +117,10 @@ A graph comparing the execution times of Drush when running it from inside the c
 The command that was used to do the test is following:
 
     for i in $(seq 1 20); do time bash -c "drush -y en views && drush -y dis views && drush -y pm-uninstall views"; sleep 1; done
-    
+
 Keep in mind that Drush was executed three times in a single test.
 
-This means that the average execution time difference displayed on the graph between native Drush and the wrapper script could be narrowed down at least three times, which is makes the end result approximately 0.5 seconds.
+This means that the average execution time difference displayed on the graph between native Drush and the wrapper script could be narrowed down at least three times, which makes the end result approximately 0.5 seconds.
 
 All tests were run on a DigitalOcean server with 8GB of RAM.
 
