@@ -3,10 +3,3 @@ php56:
   hostname: php56
   ports:
     - "9000:9000"
-  volumes_from:
-    - httpddata
-httpddata:
-  image: simpledrupalcloud/data:dev
-  hostname: httpddata
-  volumes:
-    - /httpd/data
