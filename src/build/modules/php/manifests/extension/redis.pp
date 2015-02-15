@@ -7,30 +7,26 @@ class php::extension::redis {
     source => 'puppet:///modules/php/tmp/redis-2.2.5.tgz'
   }
 
-  exec { 'tar xzf redis-2.2.5.tgz':
-    cwd => '/tmp',
-    path => ['/bin'],
+  exec { 'cd /tmp && tar xzf redis-2.2.5.tgz':
     require => File['/tmp/redis-2.2.5.tgz']
   }
 
-  exec { 'phpize-5.6.1 redis':
-    command => '/phpfarm/inst/bin/phpize-5.6.1',
-    cwd => '/tmp/redis-2.2.5',
-    require => Exec['tar xzf redis-2.2.5.tgz']
+  exec { 'cd /tmp/redis-2.2.5 && phpize-5.6.1':
+    require => Exec['cd /tmp && tar xzf redis-2.2.5.tgz']
   }
 
-  exec { '/bin/su - root -mc "cd /tmp/redis-2.2.5 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.6.1 --enable-redis-igbinary"':
+  exec { 'cd /tmp/redis-2.2.5 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.6.1 --enable-redis-igbinary':
     timeout => 0,
-    require => Exec['phpize-5.6.1 redis']
+    require => Exec['cd /tmp/redis-2.2.5 && phpize-5.6.1']
   }
 
-  exec { '/bin/su - root -mc "cd /tmp/redis-2.2.5 && make"':
+  exec { 'cd /tmp/redis-2.2.5 && make':
     timeout => 0,
-    require => Exec['/bin/su - root -mc "cd /tmp/redis-2.2.5 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.6.1 --enable-redis-igbinary"']
+    require => Exec['cd /tmp/redis-2.2.5 && ./configure --with-php-config=/phpfarm/inst/bin/php-config-5.6.1 --enable-redis-igbinary']
   }
 
-  exec { '/bin/su - root -mc "cd /tmp/redis-2.2.5 && make install"':
+  exec { 'cd /tmp/redis-2.2.5 && make install':
     timeout => 0,
-    require => Exec['/bin/su - root -mc "cd /tmp/redis-2.2.5 && make"']
+    require => Exec['cd /tmp/redis-2.2.5 && make']
   }
 }
