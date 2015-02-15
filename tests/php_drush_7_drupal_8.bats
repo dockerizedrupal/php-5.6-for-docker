@@ -10,6 +10,7 @@ setup_drupal() {
   docker exec "$(container)" /bin/su - root -mc "wget http://ftp.drupal.org/files/projects/drupal-8.0.0-beta6.tar.gz -O /tmp/drupal-8.0.0-beta6.tar.gz"
   docker exec "$(container)" /bin/su - root -mc "tar xzf /tmp/drupal-8.0.0-beta6.tar.gz -C /tmp"
   docker exec "$(container)" /bin/su - root -mc "rsync -avz /tmp/drupal-8.0.0-beta6/ /httpd/data"
+  docker exec "$(container)" /bin/su - root -mc "cp /httpd/data/sites/default/default.services.yml /httpd/data/sites/default/services.yml"
   docker exec "$(container)" /bin/su - root -mc "chown www-data.www-data /httpd/data"
   docker exec "$(container)" /bin/su - root -mc "drush -r /httpd/data -y site-install --db-url=mysqli://root:root@localhost/drupal --account-name=admin --account-pass=admin"
 }
