@@ -11,6 +11,6 @@ class php::phpcs::phpcompatibility {
   }
 
   bash_exec { 'mv /tmp/PHPCompatibility-master /root/.composer/vendor/squizlabs/php_codesniffer/CodeSniffer/Standards/PHPCompatibility':
-    require => Bash_bash_exec['cd /tmp && unzip PHPCompatibility-master.zip']
+    require => Bash_exec['cd /tmp && unzip PHPCompatibility-master.zip']
   }
 }
