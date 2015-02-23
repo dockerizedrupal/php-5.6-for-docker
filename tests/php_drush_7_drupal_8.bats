@@ -16,7 +16,7 @@ setup_drupal() {
 }
 
 setup() {
-  fig -f "${FIG_FILE}" up -d
+  fig -f "${FIG_FILE}" up -d --allow-insecure-ssl
 
   sleep 10
 
