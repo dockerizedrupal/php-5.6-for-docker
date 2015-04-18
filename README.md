@@ -2,7 +2,7 @@
 
 A [Docker](https://docker.com/) container for [PHP](http://php.net/) version 5.6.1 that runs PHP in FPM (FastCGI Process Manager) mode.
 
-Configuration, PHP extensions and other tools built into the image are primarily aimed for the developers that are using [Drupal](https://www.drupal.org/) as their primary development framework.
+Condocker-composeuration, PHP extensions and other tools built into the image are primarily aimed for the developers that are using [Drupal](https://www.drupal.org/) as their primary development framework.
 
 ## Run the container
 
@@ -15,13 +15,13 @@ Using the `docker` command:
       -d \
       viljaste/php:5.6-dev
 
-Using the `fig` command
+Using the `docker-compose` command
 
     TMP="$(mktemp -d)" \
       && git clone http://git.simpledrupalcloud.com/simpledrupalcloud/docker-php.git "${TMP}" \
       && cd "${TMP}" \
       && git checkout 5.6-dev \
-      && sudo fig up
+      && sudo docker-compose up
 
 ## Build the image
 
