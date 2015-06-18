@@ -3,3 +3,20 @@ php:
   hostname: php
   ports:
     - "9000:9000"
+  environment:
+    - SERVER_NAME=localhost
+    - DRUPAL_VERSION=8
+    - POST_MAX_SIZE=512M
+    - TIMEZONE=UTC
+    - UPLOAD_MAX_FILESIZE=512M
+    - SHORT_OPEN_TAG=1
+    - MAX_EXECUTION_TIME=300
+    - MAX_INPUT_VARS=4096
+    - MEMORY_LIMIT=512M
+    - OPCACHE=1
+    - XDEBUG=1
+    - MEMCACHED=1
+    - REDIS=1
+    - BLACKFIRE=1
+    - APCU=1
+    - APD=1

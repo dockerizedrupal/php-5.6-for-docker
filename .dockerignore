@@ -1,6 +1,8 @@
+.idea
 .git
 .gitignore
 README.md
 LICENSE.md
 docker-compose.yml
+tests
 tools

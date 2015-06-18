@@ -4,25 +4,43 @@ class php {
   include php::coder
   include php::phpcs
 
+  include php::timezone
+  include php::post_max_size
+  include php::upload_max_filesize
+  include php::short_open_tag
+  include php::max_execution_time
+  include php::max_input_vars
+  include php::memory_limit
+
   if $mysqld_host {
     include php::mysqld
-  }
-
-  if $memcached_host {
-    include php::memcached
-  }
-
-  if $redis_host {
-    include php::redis
   }
 
   if $freetds_1_server_name {
     include php::freetds
   }
 
-  file { '/usr/local/src/phpfarm/inst/php-5.6.1/lib/php.ini':
-    ensure => present,
-    content => template('php/php.ini.erb')
+  if $opcache {
+    include php::opcache
+  }
+
+  if $xdebug {
+    include php::xdebug
+  }
+
+  include php::memcached
+  include php::redis
+
+  if $blackfire {
+    include php::blackfire
+  }
+
+  if $apcu {
+    include php::apcu
+  }
+
+  if $apd {
+    include php::apd
   }
 
   file { '/root/.bashrc':

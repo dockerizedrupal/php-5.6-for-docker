@@ -115,6 +115,7 @@ mailcatcher:
   hostname: mailcatcher
   ports:
     - "80"
+    - "443"
   environment:
     - VHOST=${PROJECT_NAME}
 phpmyadmin:
@@ -224,6 +225,7 @@ mailcatcher:
   hostname: mailcatcher
   ports:
     - "80"
+    - "443"
   environment:
     - VHOST=${PROJECT_NAME}
 phpmyadmin:
@@ -333,6 +335,7 @@ mailcatcher:
   hostname: mailcatcher
   ports:
     - "80"
+    - "443"
   environment:
     - VHOST=${PROJECT_NAME}
 phpmyadmin:
@@ -403,22 +406,6 @@ if [ -n "${DRUPAL_ROOT}" ]; then
   fi
 
   mv "${DRUPAL_ROOT}/fig.yml" "${DRUPAL_ROOT}/docker-compose.yml"
-fi
-
-DRUPAL_ROOT="$(docker_compose_file_path)"
-
-if [ -n "${DRUPAL_ROOT}" ]; then
-  STATUS=$(cat "${DRUPAL_ROOT}/docker-compose.yml" | grep 'simpledrupalcloud' > /dev/null 2>&1 || echo "${?}")
-
-  if [[ "${STATUS}" -eq 0 ]]; then
-    read -p "The contents of Docker Compose file is outdated. Would you like to generate a new Docker Compose file? [Y/n]: " ANSWER
-
-    if [ "${ANSWER}" == "n" ]; then
-      exit
-    fi
-
-    rm -f "${DRUPAL_ROOT}/docker-compose.yml"
-  fi
 fi
 
 DRUPAL_ROOT="$(docker_compose_file_path)"
