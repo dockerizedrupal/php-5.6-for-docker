@@ -17,20 +17,20 @@ Using the `docker` command:
       -e TIMEZONE="UTC" \
       -e POST_MAX_SIZE="512M" \
       -e UPLOAD_MAX_FILESIZE="512M" \
-      -e SHORT_OPEN_TAG="1" \
+      -e SHORT_OPEN_TAG="On" \
       -e MAX_EXECUTION_TIME="300" \
       -e MAX_INPUT_VARS="4096" \
       -e MEMORY_LIMIT="512M" \
-      -e DISPLAY_ERRORS="1" \
-      -e DISPLAY_STARTUP_ERRORS="1" \
+      -e DISPLAY_ERRORS="On" \
+      -e DISPLAY_STARTUP_ERRORS="On" \
       -e ERROR_REPORTING="E_ALL" \
-      -e OPCACHE="1" \
-      -e XDEBUG="1" \
-      -e MEMCACHED="1" \
-      -e REDIS="1" \
-      -e BLACKFIRE="1" \
-      -e APCU="1" \
-      -e APD="1" \
+      -e OPCACHE="On" \
+      -e XDEBUG="On" \
+      -e MEMCACHED="On" \
+      -e REDIS="On" \
+      -e BLACKFIRE="On" \
+      -e APCU="On" \
+      -e APD="On" \
       -d \
       viljaste/php:5.6
 

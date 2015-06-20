@@ -7,7 +7,7 @@ class php::redis {
     }
   }
 
-  if $redis {
+  if $redis == "On" {
     file { '/usr/local/src/phpfarm/inst/current/etc/conf.d/redis.ini':
       ensure => present,
       content => template('php/redis.ini.erb'),

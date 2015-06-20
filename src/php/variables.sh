@@ -51,7 +51,7 @@ fi
 export FACTER_UPLOAD_MAX_FILESIZE="${UPLOAD_MAX_FILESIZE}"
 
 if [ -z "${SHORT_OPEN_TAG}" ]; then
-  SHORT_OPEN_TAG="1"
+  SHORT_OPEN_TAG="On"
 fi
 
 export FACTER_SHORT_OPEN_TAG="${SHORT_OPEN_TAG}"
@@ -75,7 +75,7 @@ fi
 export FACTER_MEMORY_LIMIT="${MEMORY_LIMIT}"
 
 if [ -z "${DISPLAY_ERRORS}" ]; then
-  DISPLAY_ERRORS="1"
+  DISPLAY_ERRORS="On"
 fi
 
 export FACTER_DISPLAY_ERRORS="${DISPLAY_ERRORS}"
@@ -87,43 +87,43 @@ fi
 export FACTER_ERROR_REPORTING="${ERROR_REPORTING}"
 
 if [ -z "${OPCACHE}" ]; then
-  OPCACHE="1"
+  OPCACHE="On"
 fi
 
 export FACTER_OPCACHE="${OPCACHE}"
 
 if [ -z "${XDEBUG}" ]; then
-  XDEBUG="1"
+  XDEBUG="On"
 fi
 
 export FACTER_XDEBUG="${XDEBUG}"
 
 if [ -z "${MEMCACHED}" ]; then
-  MEMCACHED="1"
+  MEMCACHED="On"
 fi
 
 export FACTER_MEMCACHED="${MEMCACHED}"
 
 if [ -z "${REDIS}" ]; then
-  REDIS="1"
+  REDIS="On"
 fi
 
 export FACTER_REDIS="${REDIS}"
 
 if [ -z "${BLACKFIRE}" ]; then
-  BLACKFIRE="1"
+  BLACKFIRE="On"
 fi
 
 export FACTER_BLACKFIRE="${BLACKFIRE}"
 
 if [ -z "${APCU}" ]; then
-  APCU="1"
+  APCU="On"
 fi
 
 export FACTER_APCU="${APCU}"
 
 if [ -z "${APD}" ]; then
-  APD="1"
+  APD="On"
 fi
 
 export FACTER_APD="${APD}"

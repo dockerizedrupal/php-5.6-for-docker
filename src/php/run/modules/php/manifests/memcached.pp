@@ -7,7 +7,7 @@ class php::memcached {
     }
   }
 
-  if $memcached {
+  if $memcached == "On" {
     file { '/usr/local/src/phpfarm/inst/current/etc/conf.d/memcached.ini':
       ensure => present,
       content => template('php/memcached.ini.erb'),

@@ -2,4 +2,4 @@ php:
   image: viljaste/php:5.6
   hostname: php
   environment:
-    - XDEBUG=1
+    - XDEBUG=On
