@@ -11,6 +11,9 @@ class php {
   include php::max_execution_time
   include php::max_input_vars
   include php::memory_limit
+  include php::display_errors
+  include php::display_startup_errors
+  include php::error_reporting
 
   if $mysqld_host {
     include php::mysqld

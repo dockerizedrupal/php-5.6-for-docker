@@ -21,6 +21,9 @@ Using the `docker` command:
       -e MAX_EXECUTION_TIME="300" \
       -e MAX_INPUT_VARS="4096" \
       -e MEMORY_LIMIT="512M" \
+      -e DISPLAY_ERRORS="1" \
+      -e DISPLAY_STARTUP_ERRORS="1" \
+      -e ERROR_REPORTING="E_ALL" \
       -e OPCACHE="1" \
       -e XDEBUG="1" \
       -e MEMCACHED="1" \

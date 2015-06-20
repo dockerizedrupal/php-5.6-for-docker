@@ -74,6 +74,18 @@ fi
 
 export FACTER_MEMORY_LIMIT="${MEMORY_LIMIT}"
 
+if [ -z "${DISPLAY_ERRORS}" ]; then
+  DISPLAY_ERRORS="1"
+fi
+
+export FACTER_DISPLAY_ERRORS="${DISPLAY_ERRORS}"
+
+if [ -z "${ERROR_REPORTING}" ]; then
+  ERROR_REPORTING="E_ALL"
+fi
+
+export FACTER_ERROR_REPORTING="${ERROR_REPORTING}"
+
 if [ -z "${OPCACHE}" ]; then
   OPCACHE="1"
 fi
