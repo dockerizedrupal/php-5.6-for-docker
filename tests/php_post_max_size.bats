@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php: post_max_size" {
-  run docker exec "$(container)" /bin/su - root -mc "php -i | grep post_max_size"
+  run docker exec "$(container)" /bin/su - root -mc "php -i | grep 'post_max_size'"
 
   [ "${status}" -eq 0 ]
   [[ "${output}" == *"1024M"* ]]

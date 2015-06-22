@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php: short_open_tag" {
-  run docker exec "$(container)" /bin/su - root -mc "php -i | grep short_open_tag"
+  run docker exec "$(container)" /bin/su - root -mc "php -i | grep 'short_open_tag'"
 
   [ "${status}" -eq 0 ]
   [[ "${output}" == *"On"* ]]

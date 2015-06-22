@@ -1,6 +1,6 @@
 #!/usr/bin/env bats
 
-DOCKER_COMPOSE_FILE="${BATS_TEST_DIRNAME}/php_xdebug.yml"
+DOCKER_COMPOSE_FILE="${BATS_TEST_DIRNAME}/php_xdebug_idekey.yml"
 
 container() {
   echo "$(docker-compose -f ${DOCKER_COMPOSE_FILE} ps php | grep php | awk '{ print $1 }')"
@@ -17,8 +17,9 @@ teardown() {
   docker-compose -f "${DOCKER_COMPOSE_FILE}" rm --force
 }
 
-@test "php: xdebug" {
-  run docker exec "$(container)" /bin/su - root -mc "php -m | grep 'Xdebug'"
+@test "php: xdebug: idekey" {
+  run docker exec "$(container)" /bin/su - root -mc "cat /usr/local/src/phpfarm/inst/current/etc/conf.d/xdebug.ini | grep 'xdebug.idekey'"
 
   [ "${status}" -eq 0 ]
+  [[ "${output}" == *"PHPSTORM"* ]]
 }

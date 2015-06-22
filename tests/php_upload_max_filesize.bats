@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php: upload_max_filesize" {
-  run docker exec "$(container)" /bin/su - root -mc "php -i | grep upload_max_filesize"
+  run docker exec "$(container)" /bin/su - root -mc "php -i | grep 'upload_max_filesize'"
 
   [ "${status}" -eq 0 ]
   [[ "${output}" == *"1024M"* ]]

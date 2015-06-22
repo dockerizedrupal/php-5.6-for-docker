@@ -25,6 +25,7 @@ Using the `docker` command:
       -e DISPLAY_STARTUP_ERRORS="On" \
       -e ERROR_REPORTING="E_ALL" \
       -e OPCACHE="On" \
+      -e OPCACHE_MEMORY_CONSUMPTION="2048" \
       -e XDEBUG="On" \
       -e XDEBUG_IDEKEY="PHPSTORM" \
       -e MEMCACHED="On" \

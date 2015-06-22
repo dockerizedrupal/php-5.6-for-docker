@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php: error_reporting" {
-  run docker exec "$(container)" /bin/su - root -mc "php -i | grep error_reporting"
+  run docker exec "$(container)" /bin/su - root -mc "php -i | grep 'error_reporting'"
 
   [ "${status}" -eq 0 ]
   [[ "${output}" == *"E_ALL"* ]]

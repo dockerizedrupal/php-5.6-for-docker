@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php: max_execution_time" {
-  run docker exec "$(container)" /bin/su - root -mc "php -i | grep max_execution_time"
+  run docker exec "$(container)" /bin/su - root -mc "php -i | grep 'max_execution_time'"
 
   [ "${status}" -eq 0 ]
   [[ "${output}" == *"600"* ]]

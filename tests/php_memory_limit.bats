@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php: memory_limit" {
-  run docker exec "$(container)" /bin/su - root -mc "php -i | grep memory_limit"
+  run docker exec "$(container)" /bin/su - root -mc "php -i | grep 'memory_limit'"
 
   [ "${status}" -eq 0 ]
   [[ "${output}" == *"1024M"* ]]

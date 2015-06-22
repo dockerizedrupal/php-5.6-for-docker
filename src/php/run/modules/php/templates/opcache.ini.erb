@@ -3,7 +3,7 @@ zend_extension = /usr/local/src/phpfarm/inst/current/lib/php/extensions/no-debug
 
 opcache.enable = 1
 opcache.enable_cli = 1
-opcache.memory_consumption = 2048
+opcache.memory_consumption = <%= @opcache_memory_consumption %>
 opcache.interned_strings_buffer = 8
 opcache.max_accelerated_files = 100000
 opcache.revalidate_freq = 0

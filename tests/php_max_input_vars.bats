@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php: max_input_vars" {
-  run docker exec "$(container)" /bin/su - root -mc "php -i | grep max_input_vars"
+  run docker exec "$(container)" /bin/su - root -mc "php -i | grep 'max_input_vars'"
 
   [ "${status}" -eq 0 ]
   [[ "${output}" == *"8192"* ]]

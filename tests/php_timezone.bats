@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php: timezone" {
-  run docker exec "$(container)" /bin/su - root -mc "php -i | grep timezone"
+  run docker exec "$(container)" /bin/su - root -mc "php -i | grep 'timezone'"
 
   [ "${status}" -eq 0 ]
   [[ "${output}" == *"Europe/Tallinn"* ]]

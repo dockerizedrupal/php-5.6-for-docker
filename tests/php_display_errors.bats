@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php: display_errors" {
-  run docker exec "$(container)" /bin/su - root -mc "php -i | grep display_errors"
+  run docker exec "$(container)" /bin/su - root -mc "php -i | grep 'display_errors'"
 
   [ "${status}" -eq 0 ]
   [[ "${output}" == *"On"* ]]
