@@ -104,6 +104,12 @@ fi
 
 export FACTER_XDEBUG="${XDEBUG}"
 
+if [ -z "${XDEBUG_IDEKEY}" ]; then
+  XDEBUG="PHPSTORM"
+fi
+
+export FACTER_XDEBUG_IDEKEY="${XDEBUG_IDEKEY}"
+
 if [ -z "${MEMCACHED}" ]; then
   MEMCACHED="On"
 fi

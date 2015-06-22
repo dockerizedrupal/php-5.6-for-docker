@@ -26,6 +26,7 @@ Using the `docker` command:
       -e ERROR_REPORTING="E_ALL" \
       -e OPCACHE="On" \
       -e XDEBUG="On" \
+      -e XDEBUG_IDEKEY="PHPSTORM" \
       -e MEMCACHED="On" \
       -e REDIS="On" \
       -e BLACKFIRE="On" \

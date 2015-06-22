@@ -18,6 +18,7 @@ php:
     - ERROR_REPORTING=E_ALL
     - OPCACHE=On
     - XDEBUG=On
+    - XDEBUG_IDEKEY=PHPSTORM
     - MEMCACHED=On
     - REDIS=On
     - BLACKFIRE=On
