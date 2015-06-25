@@ -2,4 +2,4 @@ php:
   image: viljaste/php:5.6
   hostname: php
   environment:
-    - BLACKFIRE=On
+    - PHP_INI_BLACKFIRE=On
