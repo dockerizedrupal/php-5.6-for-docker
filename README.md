@@ -42,6 +42,13 @@ Using the `docker` command:
       -e PHP_INI_BLACKFIRE_SERVER_TOKEN="" \
       -e PHP_INI_APCU="On" \
       -e PHP_INI_APD="On" \
+      -e PHP_FPM_PM="dynamic" \
+      -e PHP_FPM_PM_MAX_CHILDREN="5" \
+      -e PHP_FPM_PM_START_SERVERS="2" \
+      -e PHP_FPM_PM_MIN_SPARE_SERVERS="1" \
+      -e PHP_FPM_PM_MAX_SPARE_SERVERS="3" \
+      -e PHP_FPM_PM_PROCESS_IDLE_TIMEOUT="10s" \
+      -e PHP_FPM_PM_MAX_REQUESTS="0" \
       -e USER_ID="" \
       -e GROUP_ID="" \
       -d \

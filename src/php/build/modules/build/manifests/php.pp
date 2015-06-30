@@ -10,13 +10,6 @@ class build::php {
 
   bash_exec { 'mkdir -p /usr/local/src/phpfarm/inst/php-5.6.10/etc/pool.d': }
 
-  file { '/usr/local/src/phpfarm/inst/php-5.6.10/etc/pool.d/www.conf':
-    ensure => present,
-    source => 'puppet:///modules/build/usr/local/src/phpfarm/inst/php-5.6.10/etc/pool.d/www.conf',
-    mode => 644,
-    require => Bash_exec['mkdir -p /usr/local/src/phpfarm/inst/php-5.6.10/etc/pool.d']
-  }
-
   bash_exec { 'mkdir -p /usr/local/src/phpfarm/inst/php-5.6.10/lib/php/extensions/no-debug-non-zts-20131226': }
 
   file { '/tmp/php-5.6.10.tar.gz':
