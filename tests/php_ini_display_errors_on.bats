@@ -1,6 +1,6 @@
 #!/usr/bin/env bats
 
-DOCKER_COMPOSE_FILE="${BATS_TEST_DIRNAME}/php.yml"
+DOCKER_COMPOSE_FILE="${BATS_TEST_DIRNAME}/php_ini_display_errors_on.yml"
 
 container() {
   echo "$(docker-compose -f ${DOCKER_COMPOSE_FILE} ps php | grep php | awk '{ print $1 }')"
@@ -17,9 +17,9 @@ teardown() {
   docker-compose -f "${DOCKER_COMPOSE_FILE}" rm --force
 }
 
-@test "php" {
-  run docker exec "$(container)" /bin/su - root -lc "php -v"
+@test "php: ini: display_errors: on" {
+  run docker exec "$(container)" /bin/su - root -lc "cat /usr/local/src/phpfarm/inst/current/etc/conf.d/display_errors.ini | grep 'display_errors'"
 
   [ "${status}" -eq 0 ]
-  [[ "${output}" == *"PHP 5.6"* ]]
+  [[ "${output}" == *"On"* ]]
 }
