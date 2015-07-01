@@ -15,7 +15,6 @@ class run::drush {
     bash_exec { "chown -R -h $user_id /usr/local/src/drush7": }
     bash_exec { "chgrp -R -h $group_id /usr/local/src/drush7": }
   }
-
   elsif $drupal_version == '8' {
     file { '/usr/local/bin/drush':
       ensure => link,
