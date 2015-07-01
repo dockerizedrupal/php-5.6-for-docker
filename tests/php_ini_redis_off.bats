@@ -17,7 +17,7 @@ teardown() {
   docker-compose -f "${DOCKER_COMPOSE_FILE}" rm --force
 }
 
-@test "php: ini: redis" {
+@test "php: ini: redis: off" {
   run docker exec "$(container)" /bin/su - root -lc "php -m | grep 'redis'"
 
   [ "${status}" -ne 0 ]
