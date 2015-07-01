@@ -15,7 +15,8 @@ class build::php::packages {
       'libcloog-ppl1',
       'libsasl2-dev',
       'libldap2-dev',
-      'pkg-config'
+      'pkg-config',
+      'libreadline-dev'
     ]:
     ensure => present
   }
