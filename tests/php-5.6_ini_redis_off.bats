@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php-5.6: ini: redis: off" {
-  run docker exec "$(container)" /bin/su - root -lc "php-5.6 -m | grep 'redis'"
+  run docker exec "$(container)" /bin/su - root -lc "php -m | grep 'redis'"
 
   [ "${status}" -ne 0 ]
 }

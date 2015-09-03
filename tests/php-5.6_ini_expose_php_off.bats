@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php-5.6: ini: expose_php: off" {
-  run docker exec "$(container)" /bin/su - root -lc "php-5.6 -i | grep 'expose_php'"
+  run docker exec "$(container)" /bin/su - root -lc "php -i | grep 'expose_php'"
 
   [ "${status}" -eq 0 ]
   [[ "${output}" == *"Off"* ]]

@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php-5.6: ini: apcu: on" {
-  run docker exec "$(container)" /bin/su - root -lc "php-5.6 -m | grep 'apcu'"
+  run docker exec "$(container)" /bin/su - root -lc "php -m | grep 'apcu'"
 
   [ "${status}" -eq 0 ]
 }

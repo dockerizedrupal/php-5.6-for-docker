@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php-5.6: ini: igbinary: on" {
-  run docker exec "$(container)" /bin/su - root -lc "php-5.6 -m | grep 'igbinary'"
+  run docker exec "$(container)" /bin/su - root -lc "php -m | grep 'igbinary'"
 
   [ "${status}" -eq 0 ]
 }

@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php-5.6: ini: apd: off" {
-  run docker exec "$(container)" /bin/su - root -lc "php-5.6 -m | grep 'Advanced PHP Debugger (APD)'"
+  run docker exec "$(container)" /bin/su - root -lc "php -m | grep 'Advanced PHP Debugger (APD)'"
 
   [ "${status}" -ne 0 ]
 }

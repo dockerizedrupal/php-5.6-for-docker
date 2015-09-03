@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php-5.6" {
-  run docker exec "$(container)" /bin/su - root -lc "php-5.6 -v"
+  run docker exec "$(container)" /bin/su - root -lc "php -v"
 
   [ "${status}" -eq 0 ]
   [[ "${output}" == *"PHP 5.6"* ]]

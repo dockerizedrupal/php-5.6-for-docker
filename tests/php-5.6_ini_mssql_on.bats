@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php-5.6: ini: mssql: on" {
-  run docker exec "$(container)" /bin/su - root -lc "php-5.6 -m | grep 'mssql'"
+  run docker exec "$(container)" /bin/su - root -lc "php -m | grep 'mssql'"
 
   [ "${status}" -eq 0 ]
 }

@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php-5.6: ini: memcached: off" {
-  run docker exec "$(container)" /bin/su - root -lc "php-5.6 -m | grep 'memcached'"
+  run docker exec "$(container)" /bin/su - root -lc "php -m | grep 'memcached'"
 
   [ "${status}" -ne 0 ]
 }

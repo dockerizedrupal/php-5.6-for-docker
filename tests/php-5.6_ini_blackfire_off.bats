@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php-5.6: ini: blackfire: off" {
-  run docker exec "$(container)" /bin/su - root -lc "php-5.6 -m | grep 'blackfire'"
+  run docker exec "$(container)" /bin/su - root -lc "php -m | grep 'blackfire'"
 
   [ "${status}" -ne 0 ]
 }

@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php-5.6: ini: xdebug: off" {
-  run docker exec "$(container)" /bin/su - root -lc "php-5.6 -m | grep 'Xdebug'"
+  run docker exec "$(container)" /bin/su - root -lc "php -m | grep 'Xdebug'"
 
   [ "${status}" -ne 0 ]
 }

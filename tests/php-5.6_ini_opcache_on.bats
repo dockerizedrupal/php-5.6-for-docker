@@ -18,7 +18,7 @@ teardown() {
 }
 
 @test "php-5.6: ini: opcache: on" {
-  run docker exec "$(container)" /bin/su - root -lc "php-5.6 -m | grep 'Zend OPcache'"
+  run docker exec "$(container)" /bin/su - root -lc "php -m | grep 'Zend OPcache'"
 
   [ "${status}" -eq 0 ]
 }
