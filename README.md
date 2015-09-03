@@ -1,4 +1,4 @@
-# docker-php
+# docker-php-5.6
 
 A [Docker](https://docker.com/) image for [PHP](http://php.net/) version 5.6 that runs PHP in FPM (FastCGI Process Manager) mode.
 
@@ -52,14 +52,14 @@ Using the `docker` command:
       -e USER_ID="" \
       -e GROUP_ID="" \
       -d \
-      dockerizedrupal/php:5.6
+      dockerizedrupal/php-5.6:1.0.0
 
 Using the `docker-compose` command
 
     TMP="$(mktemp -d)" \
       && git clone https://github.com/dockerizedrupal/docker-php.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout 5.6 \
+      && git checkout 1.0.0 \
       && sudo docker-compose up
 
 ## Build the image
@@ -67,8 +67,8 @@ Using the `docker-compose` command
     TMP="$(mktemp -d)" \
       && git clone https://github.com/dockerizedrupal/docker-php.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout 5.6 \
-      && sudo docker build -t dockerizedrupal/php:5.6 . \
+      && git checkout 1.0.0 \
+      && sudo docker build -t dockerizedrupal/php-5.6:1.0.0 . \
       && cd -
 
 ## Tests
@@ -78,81 +78,81 @@ Tests are implemented in [Bats: Bash Automated Testing System](https://github.co
 ### Test results for the current release
 
     1..75
-    ok 1 php
-    ok 2 php: drupal 7
-    ok 3 php: drupal 7: drush 7
-    ok 4 php: drupal 7: phpcs
-    ok 5 php: drupal 7: phpcs: phpcompatibility
-    ok 6 php: drupal 7: phpcs: drupal
-    ok 7 php: drupal 8
-    ok 8 php: drupal 8: drush 8
-    ok 9 php: drupal 8: phpcs
-    ok 10 php: drupal 8: phpcs: phpcompatibility
-    ok 11 php: drupal 8: phpcs: drupal
-    ok 12 php: fpm: pm
-    ok 13 php: fpm: pm.max_children
-    ok 14 php: fpm: pm.max_requests
-    ok 15 php: fpm: pm.max_spare_servers
-    ok 16 php: fpm: pm.min_spare_servers
-    ok 17 php: fpm: pm.process_idle_timeout
-    ok 18 php: fpm: pm.start_servers
-    ok 19 php: freetds: FREETDS_1_SERVER_NAME
-    ok 20 php: freetds: FREETDS_1_HOST
-    ok 21 php: freetds: FREETDS_1_PORT
-    ok 22 php: freetds: FREETDS_1_TDS_VERSION
-    ok 23 php: freetds: FREETDS_2_SERVER_NAME
-    ok 24 php: freetds: FREETDS_2_HOST
-    ok 25 php: freetds: FREETDS_2_PORT
-    ok 26 php: freetds: FREETDS_2_TDS_VERSION
-    ok 27 php: freetds: FREETDS_3_SERVER_NAME
-    ok 28 php: freetds: FREETDS_3_HOST
-    ok 29 php: freetds: FREETDS_3_PORT
-    ok 30 php: freetds: FREETDS_3_TDS_VERSION
-    ok 31 php: ini: allow_url_fopen: off
-    ok 32 php: ini: allow_url_fopen: on
-    ok 33 php: ini: apcu: off
-    ok 34 php: ini: apcu: on
-    ok 35 php: ini: apd: off
-    ok 36 php: ini: apd: on
-    ok 37 php: ini: blackfire: off
-    ok 38 php: ini: blackfire: on
-    ok 39 php: ini: blackfire.server_id
-    ok 40 php: ini: blackfire.server_token
-    ok 41 php: ini: display_errors: off
-    ok 42 php: ini: display_errors: on
-    ok 43 php: ini: display_startup_errors: off
-    ok 44 php: ini: display_startup_errors: on
-    ok 45 php: ini: error_reporting
-    ok 46 php: ini: expose_php: off
-    ok 47 php: ini: expose_php: on
-    ok 48 php: ini: igbinary: on
-    ok 49 php: ini: max_execution_time
-    ok 50 php: ini: max_input_vars
-    ok 51 php: ini: memcached: off
-    ok 52 php: ini: memcached: on
-    ok 53 php: ini: memory_limit
-    ok 54 php: ini: mssql: on
-    ok 55 php: ini: opcache.memory_consumption
-    ok 56 php: ini: opcache: off
-    ok 57 php: ini: opcache: on
-    ok 58 php: ini: post_max_size
-    ok 59 php: ini: realpath_cache_size
-    ok 60 php: ini: realpath_cache_ttl
-    ok 61 php: ini: redis: off
-    ok 62 php: ini: redis: on
-    ok 63 php: ini: short_open_tag: off
-    ok 64 php: ini: short_open_tag: on
-    ok 65 php: ini: timezone
-    ok 66 php: ini: upload_max_filesize
-    ok 67 php: ini: xdebug.idekey
-    ok 68 php: ini: xdebug: off
-    ok 69 php: ini: xdebug: on
-    ok 70 php: ini: xdebug.remote_connect_back: on
-    ok 71 php: ini: xdebug.remote_connect_back: on
-    ok 72 php: ini: xdebug.remote_host
-    ok 73 php: ini: xdebug.remote_port
-    ok 74 php: smtp: off
-    ok 75 php: smtp: on
+    ok 1 php-5.6
+    ok 2 php-5.6: drupal 7
+    ok 3 php-5.6: drupal 7: drush 7
+    ok 4 php-5.6: drupal 7: phpcs
+    ok 5 php-5.6: drupal 7: phpcs: phpcompatibility
+    ok 6 php-5.6: drupal 7: phpcs: drupal
+    ok 7 php-5.6: drupal 8
+    ok 8 php-5.6: drupal 8: drush 8
+    ok 9 php-5.6: drupal 8: phpcs
+    ok 10 php-5.6: drupal 8: phpcs: phpcompatibility
+    ok 11 php-5.6: drupal 8: phpcs: drupal
+    ok 12 php-5.6: fpm: pm
+    ok 13 php-5.6: fpm: pm.max_children
+    ok 14 php-5.6: fpm: pm.max_requests
+    ok 15 php-5.6: fpm: pm.max_spare_servers
+    ok 16 php-5.6: fpm: pm.min_spare_servers
+    ok 17 php-5.6: fpm: pm.process_idle_timeout
+    ok 18 php-5.6: fpm: pm.start_servers
+    ok 19 php-5.6: freetds: FREETDS_1_SERVER_NAME
+    ok 20 php-5.6: freetds: FREETDS_1_HOST
+    ok 21 php-5.6: freetds: FREETDS_1_PORT
+    ok 22 php-5.6: freetds: FREETDS_1_TDS_VERSION
+    ok 23 php-5.6: freetds: FREETDS_2_SERVER_NAME
+    ok 24 php-5.6: freetds: FREETDS_2_HOST
+    ok 25 php-5.6: freetds: FREETDS_2_PORT
+    ok 26 php-5.6: freetds: FREETDS_2_TDS_VERSION
+    ok 27 php-5.6: freetds: FREETDS_3_SERVER_NAME
+    ok 28 php-5.6: freetds: FREETDS_3_HOST
+    ok 29 php-5.6: freetds: FREETDS_3_PORT
+    ok 30 php-5.6: freetds: FREETDS_3_TDS_VERSION
+    ok 31 php-5.6: ini: allow_url_fopen: off
+    ok 32 php-5.6: ini: allow_url_fopen: on
+    ok 33 php-5.6: ini: apcu: off
+    ok 34 php-5.6: ini: apcu: on
+    ok 35 php-5.6: ini: apd: off
+    ok 36 php-5.6: ini: apd: on
+    ok 37 php-5.6: ini: blackfire: off
+    ok 38 php-5.6: ini: blackfire: on
+    ok 39 php-5.6: ini: blackfire.server_id
+    ok 40 php-5.6: ini: blackfire.server_token
+    ok 41 php-5.6: ini: display_errors: off
+    ok 42 php-5.6: ini: display_errors: on
+    ok 43 php-5.6: ini: display_startup_errors: off
+    ok 44 php-5.6: ini: display_startup_errors: on
+    ok 45 php-5.6: ini: error_reporting
+    ok 46 php-5.6: ini: expose_php: off
+    ok 47 php-5.6: ini: expose_php: on
+    ok 48 php-5.6: ini: igbinary: on
+    ok 49 php-5.6: ini: max_execution_time
+    ok 50 php-5.6: ini: max_input_vars
+    ok 51 php-5.6: ini: memcached: off
+    ok 52 php-5.6: ini: memcached: on
+    ok 53 php-5.6: ini: memory_limit
+    ok 54 php-5.6: ini: mssql: on
+    ok 55 php-5.6: ini: opcache.memory_consumption
+    ok 56 php-5.6: ini: opcache: off
+    ok 57 php-5.6: ini: opcache: on
+    ok 58 php-5.6: ini: post_max_size
+    ok 59 php-5.6: ini: realpath_cache_size
+    ok 60 php-5.6: ini: realpath_cache_ttl
+    ok 61 php-5.6: ini: redis: off
+    ok 62 php-5.6: ini: redis: on
+    ok 63 php-5.6: ini: short_open_tag: off
+    ok 64 php-5.6: ini: short_open_tag: on
+    ok 65 php-5.6: ini: timezone
+    ok 66 php-5.6: ini: upload_max_filesize
+    ok 67 php-5.6: ini: xdebug.idekey
+    ok 68 php-5.6: ini: xdebug: off
+    ok 69 php-5.6: ini: xdebug: on
+    ok 70 php-5.6: ini: xdebug.remote_connect_back: off
+    ok 71 php-5.6: ini: xdebug.remote_connect_back: on
+    ok 72 php-5.6: ini: xdebug.remote_host
+    ok 73 php-5.6: ini: xdebug.remote_port
+    ok 74 php-5.6: smtp: off
+    ok 75 php-5.6: smtp: on
 
 ## License
 
