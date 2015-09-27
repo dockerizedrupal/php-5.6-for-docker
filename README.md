@@ -1,12 +1,10 @@
 # docker-php-5.6
 
-A [Docker](https://docker.com/) image for [PHP](http://php.net/) version 5.6 that runs PHP in FPM (FastCGI Process Manager) mode.
+A Docker image for [PHP](http://php.net/) version 5.6 that runs PHP in FPM (FastCGI Process Manager) mode.
 
-Configuration, PHP extensions and other tools built into the image are primarily aimed for the developers that are using [Drupal](https://www.drupal.org/) as their primary development framework.
+This project is part of the [Dockerized Drupal](https://dockerizedrupal.com/) initiative.
 
 ## Run the container
-
-Using the `docker` command:
 
     CONTAINER="php" && sudo docker run \
       --name "${CONTAINER}" \
@@ -15,6 +13,14 @@ Using the `docker` command:
       -e SERVER_NAME="localhost" \
       -e TIMEZONE="Etc/UTC" \
       -e DRUPAL_VERSION="8" \
+      -e SMTP_HOST="" \
+      -e SMTP_PORT="25" \
+      -e MYSQL_HOST="" \
+      -e MYSQL_PORT="3306" \
+      -e MEMCACHED_HOST="" \
+      -e MEMCACHED_PORT="11211" \
+      -e REDIS_HOST="" \
+      -e REDIS_PORT="6379" \
       -e PHP_INI_REALPATH_CACHE_SIZE="256k" \
       -e PHP_INI_REALPATH_CACHE_TTL="3600" \
       -e PHP_INI_POST_MAX_SIZE="512M" \
@@ -60,24 +66,20 @@ Using the `docker` command:
       -e USER_ID="" \
       -e GROUP_ID="" \
       -d \
-      dockerizedrupal/php-5.6:1.0.8
-
-Using the `docker-compose` command
-
-    TMP="$(mktemp -d)" \
-      && git clone https://github.com/dockerizedrupal/docker-php.git "${TMP}" \
-      && cd "${TMP}" \
-      && git checkout 1.0.8 \
-      && sudo docker-compose up
+      dockerizedrupal/php-5.6:1.1.0
 
 ## Build the image
 
     TMP="$(mktemp -d)" \
       && git clone https://github.com/dockerizedrupal/docker-php.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout 1.0.8 \
-      && sudo docker build -t dockerizedrupal/php-5.6:1.0.8 . \
+      && git checkout 1.1.0 \
+      && sudo docker build -t dockerizedrupal/php-5.6:1.1.0 . \
       && cd -
+
+## Changing the container behaviour on runtime through environment variables
+
+    // TODO
 
 ## Tests
 
