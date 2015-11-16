@@ -66,15 +66,15 @@ This project is part of the [Dockerized Drupal](https://dockerizedrupal.com/) in
       -e USER_ID="" \
       -e GROUP_ID="" \
       -d \
-      dockerizedrupal/php-5.6:1.1.3
+      dockerizedrupal/php-5.6:1.1.4
 
 ## Build the image
 
     TMP="$(mktemp -d)" \
       && git clone https://github.com/dockerizedrupal/docker-php.git "${TMP}" \
       && cd "${TMP}" \
-      && git checkout 1.1.3 \
-      && sudo docker build -t dockerizedrupal/php-5.6:1.1.3 . \
+      && git checkout 1.1.4 \
+      && sudo docker build -t dockerizedrupal/php-5.6:1.1.4 . \
       && cd -
 
 ## Changing the container behaviour on runtime through environment variables
