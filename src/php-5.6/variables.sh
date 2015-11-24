@@ -90,6 +90,16 @@ fi
 
 export FACTER_DRUPAL_VERSION="${DRUPAL_VERSION}"
 
+if [ -z "${DRUSH_VERSION}" ]; then
+  DRUSH_VERSION="8"
+fi
+
+if [ "${DRUPAL_VERSION}" == "8" ]; then
+  DRUSH_VERSION="8"
+fi
+
+export FACTER_DRUSH_VERSION="${DRUSH_VERSION}"
+
 if [ -z "${PHP_INI_REALPATH_CACHE_SIZE}" ]; then
   PHP_INI_REALPATH_CACHE_SIZE="256k"
 fi

@@ -7,39 +7,8 @@ class build::drush {
 
   bash_exec { "su - container -c 'mkdir /home/container/.drush'": }
 
-  file { '/tmp/drush-7.0.0.tar.gz':
-    ensure => present,
-    source => 'puppet:///modules/build/tmp/drush-7.0.0.tar.gz'
-  }
-
-  bash_exec { 'cd /tmp && tar xzf drush-7.0.0.tar.gz':
-    require => File['/tmp/drush-7.0.0.tar.gz']
-  }
-
-  bash_exec { 'mv /tmp/drush-7.0.0 /usr/local/src/drush7':
-    require => Bash_exec['cd /tmp && tar xzf drush-7.0.0.tar.gz']
-  }
-
-  bash_exec { 'cd /usr/local/src/drush7 && composer install':
-    timeout => 0,
-    require => Bash_exec['mv /tmp/drush-7.0.0 /usr/local/src/drush7']
-  }
-
-  file { '/tmp/drush-8.0.0-rc4.tar.gz':
-    ensure => present,
-    source => 'puppet:///modules/build/tmp/drush-8.0.0-rc4.tar.gz'
-  }
-
-  bash_exec { 'cd /tmp && tar xzf drush-8.0.0-rc4.tar.gz':
-    require => File['/tmp/drush-8.0.0-rc4.tar.gz']
-  }
-
-  bash_exec { 'mv /tmp/drush-8.0.0-rc4 /usr/local/src/drush8':
-    require => Bash_exec['cd /tmp && tar xzf drush-8.0.0-rc4.tar.gz']
-  }
-
-  bash_exec { 'cd /usr/local/src/drush8 && composer install':
-    timeout => 0,
-    require => Bash_exec['mv /tmp/drush-8.0.0-rc4 /usr/local/src/drush8']
-  }
+  include build::drush::drush5
+  include build::drush::drush6
+  include build::drush::drush7
+  include build::drush::drush8
 }
