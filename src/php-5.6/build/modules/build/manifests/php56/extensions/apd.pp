@@ -1,4 +1,4 @@
-class build::php56::extension::apd {
+class build::php56::extensions::apd {
   require build::php56
 
   file { '/tmp/pecl-apd-master.zip':

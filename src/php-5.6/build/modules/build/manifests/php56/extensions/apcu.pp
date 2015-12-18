@@ -1,4 +1,4 @@
-class build::php56::extension::apcu {
+class build::php56::extensions::apcu {
   require build::php56
 
   file { '/tmp/apcu-4.0.7.tgz':

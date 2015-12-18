@@ -1,4 +1,4 @@
-class build::php56::extension::blackfire {
+class build::php56::extensions::blackfire {
   require build::php56
 
   bash_exec { 'mkdir -p /var/run/blackfire': }

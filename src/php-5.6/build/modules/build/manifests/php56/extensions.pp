@@ -1,10 +1,10 @@
 class build::php56::extensions {
   require build::php56
 
-  include build::php56::extension::xdebug
-  include build::php56::extension::memcached
-  include build::php56::extension::redis
-  include build::php56::extension::blackfire
-  include build::php56::extension::apcu
-  include build::php56::extension::apd
+  include build::php56::extensions::xdebug
+  include build::php56::extensions::memcached
+  include build::php56::extensions::redis
+  include build::php56::extensions::blackfire
+  include build::php56::extensions::apcu
+  include build::php56::extensions::apd
 }
