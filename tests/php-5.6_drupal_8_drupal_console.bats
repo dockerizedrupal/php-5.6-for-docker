@@ -7,9 +7,9 @@ container() {
 }
 
 setup_drupal() {
-  docker exec "$(container)" /bin/su - container -lc "wget http://ftp.drupal.org/files/projects/drupal-8.0.0.tar.gz -O /tmp/drupal-8.0.0.tar.gz"
-  docker exec "$(container)" /bin/su - container -lc "tar xzf /tmp/drupal-8.0.0.tar.gz -C /tmp"
-  docker exec "$(container)" /bin/su - container -lc "rsync -avz /tmp/drupal-8.0.0/ /apache/data"
+  docker exec "$(container)" /bin/su - container -lc "wget http://ftp.drupal.org/files/projects/drupal-8.0.5.tar.gz -O /tmp/drupal-8.0.5.tar.gz"
+  docker exec "$(container)" /bin/su - container -lc "tar xzf /tmp/drupal-8.0.5.tar.gz -C /tmp"
+  docker exec "$(container)" /bin/su - container -lc "rsync -avz /tmp/drupal-8.0.5/ /apache/data"
   docker exec "$(container)" /bin/su - container -lc "cp /apache/data/sites/default/default.services.yml /apache/data/sites/default/services.yml"
   docker exec "$(container)" /bin/su - container -lc "drush -r /apache/data -y site-install --db-url=mysqli://container:container@localhost/drupal --account-name=admin --account-pass=admin"
   docker exec "$(container)" /bin/su - container -lc "chown container.container /apache/data"
@@ -32,6 +32,6 @@ teardown() {
   run docker exec "$(container)" /bin/su - root -mc "cd /apache/data/ && drupal site:status | grep 'Drupal'"
 
   [ "${status}" -eq 0 ]
-  [[ "${output}" == *"8.0.0"* ]]
+  [[ "${output}" == *"8.0.5"* ]]
 }
 
