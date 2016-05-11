@@ -2,4 +2,5 @@ php:
   image: dockerizedrupal/php-5.6:1.2.7
   hostname: php
   environment:
-    - PHP_INI_APD=Off
+    - SMTP_USERNAME=smtp_username
+    - SMTP_PASSWORD=smtp_password
