@@ -4,51 +4,51 @@ class build::php56 {
   require build::phpfarm
   require build::freetds
 
-  bash_exec { 'mkdir -p /usr/local/src/phpfarm/inst/php-5.6.20/etc/conf.d': }
+  bash_exec { 'mkdir -p /usr/local/src/phpfarm/inst/php-5.6.21/etc/conf.d': }
 
-  bash_exec { 'mkdir -p /usr/local/src/phpfarm/inst/php-5.6.20/etc/fpm.d': }
+  bash_exec { 'mkdir -p /usr/local/src/phpfarm/inst/php-5.6.21/etc/fpm.d': }
 
-  bash_exec { 'mkdir -p /usr/local/src/phpfarm/inst/php-5.6.20/etc/pool.d': }
+  bash_exec { 'mkdir -p /usr/local/src/phpfarm/inst/php-5.6.21/etc/pool.d': }
 
-  bash_exec { 'mkdir -p /usr/local/src/phpfarm/inst/php-5.6.20/lib/php/extensions/no-debug-non-zts-20131226': }
+  bash_exec { 'mkdir -p /usr/local/src/phpfarm/inst/php-5.6.21/lib/php/extensions/no-debug-non-zts-20131226': }
 
-  file { '/tmp/php-5.6.20.tar.gz':
+  file { '/tmp/php-5.6.21.tar.gz':
     ensure => present,
-    source => 'puppet:///modules/build/tmp/php-5.6.20.tar.gz'
+    source => 'puppet:///modules/build/tmp/php-5.6.21.tar.gz'
   }
 
-  bash_exec { 'cd /tmp && tar xzf php-5.6.20.tar.gz':
-    require => File['/tmp/php-5.6.20.tar.gz']
+  bash_exec { 'cd /tmp && tar xzf php-5.6.21.tar.gz':
+    require => File['/tmp/php-5.6.21.tar.gz']
   }
 
-  bash_exec { 'mv /tmp/php-5.6.20 /usr/local/src/phpfarm/src/php-5.6.20':
-    require => Bash_exec['cd /tmp && tar xzf php-5.6.20.tar.gz']
+  bash_exec { 'mv /tmp/php-5.6.21 /usr/local/src/phpfarm/src/php-5.6.21':
+    require => Bash_exec['cd /tmp && tar xzf php-5.6.21.tar.gz']
   }
 
-  file { '/usr/local/src/phpfarm/src/custom/options-5.6.20.sh':
+  file { '/usr/local/src/phpfarm/src/custom/options-5.6.21.sh':
     ensure => present,
-    source => 'puppet:///modules/build/usr/local/src/phpfarm/src/custom/options-5.6.20.sh',
+    source => 'puppet:///modules/build/usr/local/src/phpfarm/src/custom/options-5.6.21.sh',
     mode => 755,
-    require => Bash_exec['mv /tmp/php-5.6.20 /usr/local/src/phpfarm/src/php-5.6.20']
+    require => Bash_exec['mv /tmp/php-5.6.21 /usr/local/src/phpfarm/src/php-5.6.21']
   }
 
-  bash_exec { '/usr/local/src/phpfarm/src/main.sh 5.6.20':
+  bash_exec { '/usr/local/src/phpfarm/src/main.sh 5.6.21':
     timeout => 0,
-    require => File['/usr/local/src/phpfarm/src/custom/options-5.6.20.sh']
+    require => File['/usr/local/src/phpfarm/src/custom/options-5.6.21.sh']
   }
 
-  bash_exec { 'rm -rf /usr/local/src/phpfarm/src/php-5.6.20':
-    require => Bash_exec['/usr/local/src/phpfarm/src/main.sh 5.6.20']
+  bash_exec { 'rm -rf /usr/local/src/phpfarm/src/php-5.6.21':
+    require => Bash_exec['/usr/local/src/phpfarm/src/main.sh 5.6.21']
   }
 
-  file { '/usr/local/src/phpfarm/inst/php-5.6.20/etc/php-fpm.conf':
+  file { '/usr/local/src/phpfarm/inst/php-5.6.21/etc/php-fpm.conf':
     ensure => present,
-    source => 'puppet:///modules/build/usr/local/src/phpfarm/inst/php-5.6.20/etc/php-fpm.conf',
+    source => 'puppet:///modules/build/usr/local/src/phpfarm/inst/php-5.6.21/etc/php-fpm.conf',
     mode => 644,
-    require => Bash_exec['/usr/local/src/phpfarm/src/main.sh 5.6.20']
+    require => Bash_exec['/usr/local/src/phpfarm/src/main.sh 5.6.21']
   }
 
-  bash_exec { 'switch-phpfarm 5.6.20':
-    require => Bash_exec['/usr/local/src/phpfarm/src/main.sh 5.6.20']
+  bash_exec { 'switch-phpfarm 5.6.21':
+    require => Bash_exec['/usr/local/src/phpfarm/src/main.sh 5.6.21']
   }
 }

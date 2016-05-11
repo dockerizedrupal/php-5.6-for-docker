@@ -10,18 +10,18 @@ class build::php56::extensions::apcu {
     require => File['/tmp/apcu-4.0.7.tgz']
   }
 
-  bash_exec { 'cd /tmp/apcu-4.0.7 && phpize-5.6.20':
+  bash_exec { 'cd /tmp/apcu-4.0.7 && phpize-5.6.21':
     require => Bash_exec['cd /tmp && tar xzf apcu-4.0.7.tgz']
   }
 
-  bash_exec { 'cd /tmp/apcu-4.0.7 && ./configure --with-php-config=/usr/local/src/phpfarm/inst/bin/php-config-5.6.20':
+  bash_exec { 'cd /tmp/apcu-4.0.7 && ./configure --with-php-config=/usr/local/src/phpfarm/inst/bin/php-config-5.6.21':
     timeout => 0,
-    require => Bash_exec['cd /tmp/apcu-4.0.7 && phpize-5.6.20']
+    require => Bash_exec['cd /tmp/apcu-4.0.7 && phpize-5.6.21']
   }
 
   bash_exec { 'cd /tmp/apcu-4.0.7 && make':
     timeout => 0,
-    require => Bash_exec['cd /tmp/apcu-4.0.7 && ./configure --with-php-config=/usr/local/src/phpfarm/inst/bin/php-config-5.6.20']
+    require => Bash_exec['cd /tmp/apcu-4.0.7 && ./configure --with-php-config=/usr/local/src/phpfarm/inst/bin/php-config-5.6.21']
   }
 
   bash_exec { 'cd /tmp/apcu-4.0.7 && make install':
