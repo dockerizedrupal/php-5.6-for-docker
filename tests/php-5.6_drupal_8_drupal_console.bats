@@ -32,6 +32,6 @@ teardown() {
   run docker exec "$(container)" /bin/su - root -mc "cd /apache/data/ && drupal site:status | grep 'Drupal'"
 
   [ "${status}" -eq 0 ]
-  [[ "${output}" == *"8.0.5"* ]]
+  [[ "${output}" == *"1.0.0-alpha2"* ]]
 }
 
